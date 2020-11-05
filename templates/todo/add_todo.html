@@ -9,7 +9,14 @@
 
             {% for todo in todo_items %}
             <li class="collection-item">
-                <div>{{ todo }} <div class="right"><a class="waves-effect waves-light btn-small red darken-4">delete</a></div>
+                <div>{{ todo }} <div class="right">
+                    <form action="delete_todo/{{todo.id}}" method="post">
+                        {% csrf_token %}
+                        <button style="margin-bottom: 2px;" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                    </form>
+                </div>
                 </div>
             </li>
             {% endfor %}
